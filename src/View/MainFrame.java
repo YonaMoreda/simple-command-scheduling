@@ -11,9 +11,11 @@ import java.util.Objects;
 public class MainFrame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("sample.fxml")));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("layout.fxml")));
+        primaryStage.setTitle("Simple Command Scheduling");
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("Styles/DarkMode.css");
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 }
