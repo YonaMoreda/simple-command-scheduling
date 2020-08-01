@@ -16,6 +16,5 @@ public class TaskWidget extends HBox {
         StartButton startButton = new StartButton(commandWidget, hourWidget, minuteWidget, secondWidget);
         StopButton stopButton = new StopButton(startButton);
         this.getChildren().addAll(commandWidget, hourWidget, minuteWidget, secondWidget, startButton, stopButton);
-
     }
 }

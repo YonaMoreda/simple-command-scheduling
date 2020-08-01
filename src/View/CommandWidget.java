@@ -10,6 +10,5 @@ public class CommandWidget extends TextField {
         super();
         this.setPromptText("Type your command here");
         this.setMinWidth(300);
-//        this.setPadding(new Insets(0, 0, 0, 0));
     }
 }

@@ -53,6 +53,7 @@ public class StartButton extends Button {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        timer.cancel();
                     }
                 });
             }
