@@ -14,7 +14,10 @@ public class TaskWidget extends HBox {
         TimeWidget minuteWidget = new TimeWidget(TimeFieldType.MINUTE);
         TimeWidget secondWidget = new TimeWidget(TimeFieldType.SECOND);
         StartButton startButton = new StartButton(commandWidget, hourWidget, minuteWidget, secondWidget);
-        StopButton stopButton = new StopButton(startButton);
-        this.getChildren().addAll(commandWidget, hourWidget, minuteWidget, secondWidget, startButton, stopButton);
+        StopButton stopButton = new StopButton();
+        startButton.setStopButton(stopButton);
+        stopButton.setStartButton(startButton);
+        DeleteButton deleteButton = new DeleteButton();
+        this.getChildren().addAll(commandWidget, hourWidget, minuteWidget, secondWidget, startButton, stopButton, deleteButton);
     }
 }

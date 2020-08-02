@@ -40,12 +40,22 @@
 
 .StopButton {
     -fx-base: -fx-accent ;
-    -fx-background-color: #960000;
+    -fx-background-color: #969696;
 }
 
 .StopButton:hover {
     -fx-text-fill: #070707;
 }
+
+.DeleteButton {
+    -fx-base: -fx-accent ;
+    -fx-background-color: #960000;
+}
+
+.DeleteButton:hover {
+    -fx-text-fill: #070707;
+}
+
 
 
 .text-area {
