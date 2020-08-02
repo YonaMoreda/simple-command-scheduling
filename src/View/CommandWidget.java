@@ -1,7 +1,5 @@
 package View;
 
-
-import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
 
 public class CommandWidget extends TextField {

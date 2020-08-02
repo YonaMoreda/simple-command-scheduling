@@ -3,7 +3,11 @@ package View;
 
 import Model.TimeClass;
 import javafx.application.Platform;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -11,11 +15,12 @@ import java.util.TimerTask;
 
 public class StartButton extends Button {
 
-    private CommandWidget commandWidget;
-    private TimeWidget hourWidget;
-    private TimeWidget minuteWidget;
-    private TimeWidget secondWidget;
+    private final CommandWidget commandWidget;
+    private final TimeWidget hourWidget;
+    private final TimeWidget minuteWidget;
+    private final TimeWidget secondWidget;
     private Timer timer;
+    private StopButton stopButton;
 
     public StartButton(CommandWidget commandWidget, TimeWidget hourWidget, TimeWidget minuteWidget, TimeWidget secondWidget) {
         super("Go");
@@ -29,6 +34,8 @@ public class StartButton extends Button {
     private void setEventProperty() {
         this.setOnAction(actionEvent -> {
             createAndStartTimer();
+            this.setDisable(true);
+            stopButton.setDisable(false);
         });
     }
 
@@ -50,8 +57,8 @@ public class StartButton extends Button {
                         Runtime runtime = Runtime.getRuntime();
                         try {
                             runtime.exec(commandWidget.getText());
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                        } catch (IOException | IllegalArgumentException e) {
+                            displayErrorAlert(e);
                         }
                         timer.cancel();
                     }
@@ -60,7 +67,24 @@ public class StartButton extends Button {
         }, delay, period);
     }
 
+    private void displayErrorAlert(Exception e) {
+        timer.cancel();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error - " + e.getMessage());
+        alert.setHeaderText("Failed to execute given command.");
+        alert.setContentText(e.getLocalizedMessage());
+        Scene scene = alert.getDialogPane().getScene();
+        scene.getStylesheets().add("Styles/DarkMode.css");
+        Stage stage = (Stage) scene.getWindow();
+        stage.getIcons().add(new Image("icon.png"));
+        alert.showAndWait();
+    }
+
     public Timer getTimer() {
         return timer;
+    }
+
+    public void setStopButton(StopButton stopButton) {
+        this.stopButton = stopButton;
     }
 }
