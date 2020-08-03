@@ -1,5 +1,8 @@
 # simple-command-scheduling
 A simple command scheduling (JavaFX)
+Add commands for later execution (provide a countdown for commands HH:MM:SS).
+
+Example use:
 
 ![Image of demo screenshot gif](demo-screenshot-1.gif)
 
