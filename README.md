@@ -6,6 +6,8 @@ Example use:
 
 ![Image of demo screenshot gif](demo-screenshot-1.gif)
 
+The time field are updated in real time with the countdown.
+
 Provides alert for non-existing commands.
 Output redirection (`shell_output.log`)
 
