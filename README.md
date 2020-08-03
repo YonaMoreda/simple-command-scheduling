@@ -8,4 +8,5 @@ Example use:
 
 Provides alert for non-existing commands.
 Output redirection (`shell_output.log`)
+
 ![Image of demo screenshot gif](demo-screenshot-2.gif)
