@@ -4,6 +4,8 @@ Add commands for later execution (provide a countdown for commands HH:MM:SS).
 
 Example use:
 
-![Image of screenshot](screenshot.jpg)
+![Image of demo screenshot gif](demo-screenshot-1.gif)
 
-The countdown fields are updated in realtime.
+Provides alert for non-existing commands.
+Output redirection (`shell_output.log`)
+![Image of demo screenshot gif](demo-screenshot-2.gif)
