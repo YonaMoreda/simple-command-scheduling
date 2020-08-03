@@ -72,6 +72,11 @@
                                     <Insets left="40.0" />
                                  </HBox.margin>
                               </Label>
+                              <Label text="Action">
+                                 <HBox.margin>
+                                    <Insets left="60.0" right="70.0" />
+                                 </HBox.margin>
+                              </Label>
                            </children>
                         </HBox>
                      </children>
