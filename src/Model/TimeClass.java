@@ -7,9 +7,15 @@ public class TimeClass {
     private int hours;
 
     public TimeClass(int totalSeconds) {
-        this.hours = totalSeconds / 3600;
-        this.minutes = (totalSeconds % 3600) / 60;
-        this.seconds = totalSeconds - (this.hours * 3600) - (this.minutes * 60);
+        if (totalSeconds >= 0) {
+            this.hours = totalSeconds / 3600;
+            this.minutes = (totalSeconds % 3600) / 60;
+            this.seconds = totalSeconds - (this.hours * 3600) - (this.minutes * 60);
+        } else {
+            this.hours = 0;
+            this.minutes = 0;
+            this.seconds = 0;
+        }
     }
 
     public int getSeconds() {
