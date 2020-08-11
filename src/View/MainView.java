@@ -9,7 +9,10 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class MainFrame extends Application {
+/**
+ * MainView of application
+ */
+public class MainView extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("layout.fxml")));

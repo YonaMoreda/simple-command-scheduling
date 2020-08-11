@@ -1,64 +1,40 @@
 package View;
 
-import Model.TimeFieldType;
-import javafx.geometry.Insets;
+import Controller.TimeWidgetController;
+import Model.TimeUnit;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
+/**
+ * TimeWidget consisting for hour, minutes and seconds text fields with plus, minus buttons per field
+ */
 public class TimeWidget extends HBox {
     private final Button plusButton;
     private final TextField textField;
     private final Button minusButton;
-    private TimeFieldType timeFieldType;
+    private TimeUnit timeUnit;
+    private TimeWidgetController timeWidgetController;
 
-    public TimeWidget(TimeFieldType timeFieldType) {
+    public TimeWidget(TimeUnit timeUnit) {
         this(new Button("+"), new TextField("00"), new Button("-"));
         this.textField.setPrefWidth(30);
         this.getChildren().addAll(minusButton, textField, plusButton);
-        this.timeFieldType = timeFieldType;
+        this.timeUnit = timeUnit;
         setPromptText();
-        setEventProperties();
+        this.timeWidgetController = new TimeWidgetController(plusButton, textField, minusButton);
+        timeWidgetController.setTimeWidgetEventProperties();
     }
 
+    /**
+     * Setting prompt text for text field based on type
+     */
     private void setPromptText() {
-        switch (timeFieldType) {
+        switch (timeUnit) {
             case HOUR -> textField.setPromptText("hh");
             case MINUTE -> textField.setPromptText("mm");
             case SECOND -> textField.setPromptText("ss");
         }
-    }
-
-    private void setEventProperties() {
-        plusButton.setOnAction(actionEvent -> {
-            int number = 0;
-            if (!("".equals(textField.getText()))) {
-                number = Integer.parseInt(textField.getText());
-            }
-
-            if (number + 1 < 10) {
-                textField.setText("0".concat(String.valueOf(number + 1)));
-            } else {
-                textField.setText(String.valueOf(number + 1));
-            }
-        });
-
-        minusButton.setOnAction(actionEvent -> {
-            int number = Integer.parseInt(textField.getText());
-            if (number - 1 <= 0) {
-                textField.setText("00");
-            } else if (number - 1 < 10) {
-                textField.setText("0".concat(String.valueOf(number - 1)));
-            } else {
-                textField.setText(String.valueOf(number - 1));
-            }
-        });
-
-        textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                textField.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
     }
 
     public TimeWidget(Button plusButton, TextField textField, Button minusButton) {
@@ -72,11 +48,6 @@ public class TimeWidget extends HBox {
         return Integer.parseInt(textField.getText());
     }
 
-    public TextField getTextField() {
-        return textField;
-    }
-
-
     public void setTextFieldTime(int time) {
         if (time < 0) {
             textField.setText("00");
@@ -85,6 +56,5 @@ public class TimeWidget extends HBox {
         } else {
             textField.setText(String.valueOf(time));
         }
-
     }
 }
