@@ -1,20 +1,17 @@
 package View;
 
+import Controller.DeleteButtonController;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
 
+/**
+ * Delete button to remove a TaskWidget
+ */
 public class DeleteButton extends Button {
 
     public DeleteButton() {
         super("Delete");
         this.getStyleClass().add("DeleteButton");
-        setEventProperty();
-    }
-
-    private void setEventProperty() {
-        this.setOnAction(actionEvent -> {
-            VBox main_VBox = (VBox) this.getScene().lookup("#main_VBox");
-            main_VBox.getChildren().remove(this.getParent());
-        });
+        DeleteButtonController deleteButtonController = new DeleteButtonController(this);
+        deleteButtonController.setEventProperty();
     }
 }

@@ -1,6 +1,6 @@
 package Model;
 
-public enum TimeFieldType {
+public enum TimeUnit {
     HOUR,
     MINUTE,
     SECOND

@@ -12,3 +12,7 @@ Provides alert for non-existing commands.
 Output redirection (`shell_output.log`)
 
 ![Image of demo screenshot gif](demo-screenshot-2.gif)
+
+
+Start, Stop and Delete all tasks
+![Image of demo screenshot gif](demo-screenshot-3.gif)
